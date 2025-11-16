@@ -1,0 +1,5 @@
+# Create a file called .gitignore that tells Git which files to ignore
+echo "auto_sync.py" >> .gitignore
+echo "setup_auto_sync.py" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo "__pycache__/" >> .gitignore
