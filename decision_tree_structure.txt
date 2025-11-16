@@ -1,0 +1,52 @@
+|--- Variance <= -0.05
+|   |--- Skewness <= 0.69
+|   |   |--- Curtosis <= 1.26
+|   |   |   |--- Variance <= -0.24
+|   |   |   |   |--- class: Forged
+|   |   |   |--- Variance >  -0.24
+|   |   |   |   |--- Variance <= -0.23
+|   |   |   |   |   |--- class: Authentic
+|   |   |   |   |--- Variance >  -0.23
+|   |   |   |   |   |--- class: Forged
+|   |   |--- Curtosis >  1.26
+|   |   |   |--- Skewness <= -1.15
+|   |   |   |   |--- class: Forged
+|   |   |   |--- Skewness >  -1.15
+|   |   |   |   |--- class: Authentic
+|   |--- Skewness >  0.69
+|   |   |--- Variance <= -1.36
+|   |   |   |--- Entropy <= -0.36
+|   |   |   |   |--- class: Forged
+|   |   |   |--- Entropy >  -0.36
+|   |   |   |   |--- class: Authentic
+|   |   |--- Variance >  -1.36
+|   |   |   |--- class: Authentic
+|--- Variance >  -0.05
+|   |--- Variance <= 0.69
+|   |   |--- Curtosis <= -0.84
+|   |   |   |--- Skewness <= 0.78
+|   |   |   |   |--- class: Forged
+|   |   |   |--- Skewness >  0.78
+|   |   |   |   |--- class: Authentic
+|   |   |--- Curtosis >  -0.84
+|   |   |   |--- Entropy <= 0.62
+|   |   |   |   |--- Curtosis <= -0.66
+|   |   |   |   |   |--- Variance <= 0.02
+|   |   |   |   |   |   |--- class: Forged
+|   |   |   |   |   |--- Variance >  0.02
+|   |   |   |   |   |   |--- class: Authentic
+|   |   |   |   |--- Curtosis >  -0.66
+|   |   |   |   |   |--- class: Authentic
+|   |   |   |--- Entropy >  0.62
+|   |   |   |   |--- Curtosis <= -0.37
+|   |   |   |   |   |--- class: Forged
+|   |   |   |   |--- Curtosis >  -0.37
+|   |   |   |   |   |--- Variance <= 0.06
+|   |   |   |   |   |   |--- Curtosis <= 0.38
+|   |   |   |   |   |   |   |--- class: Forged
+|   |   |   |   |   |   |--- Curtosis >  0.38
+|   |   |   |   |   |   |   |--- class: Authentic
+|   |   |   |   |   |--- Variance >  0.06
+|   |   |   |   |   |   |--- class: Authentic
+|   |--- Variance >  0.69
+|   |   |--- class: Authentic
