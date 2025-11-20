@@ -3,7 +3,7 @@
 Main script for Decision Tree Classification Pipeline
 Execute the complete pipeline or individual steps
 """
-
+#webhook!!!!
 from model_pipeline import *
 import argparse
 import joblib
@@ -11,7 +11,9 @@ import joblib
 def main():
     parser = argparse.ArgumentParser(description='Decision Tree Classification Pipeline')
     parser.add_argument('--prepare', action='store_true', help='Only prepare data')
+    parser.add_argument('--train', action='store_true', help='Only train model')
     parser.add_argument('--evaluate', action='store_true', help='Only evaluate model')
+    parser.add_argument('--visualize', action='store_true', help='Only visualize tree')
     parser.add_argument('--all', action='store_true', help='Run complete pipeline (default)')
     parser.add_argument('--data_path', type=str, default='bill_authentication.csv', 
                        help='Path to the dataset CSV file')
