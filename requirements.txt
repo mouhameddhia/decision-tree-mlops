@@ -10,3 +10,12 @@ joblib
 seaborn
 watchdog
 flask
+streamlit
+pylint
+flake8
+bandit
+pytest
+fpdf 
+reportlab
+black
+pyttsx3==2.90

@@ -12,19 +12,27 @@ app = Flask(__name__)
 # Optional: set GITHUB_WEBHOOK_SECRET in env to enable HMAC verification
 GITHUB_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET")  # e.g. 'mysupersecret'
 
+
 def verify_signature(payload, signature_header):
+    """Verify GitHub webhook HMAC signature."""
     if not GITHUB_SECRET:
-        return True  # no secret configured -> skip verification (not recommended for prod)
+        return (
+            True  # no secret configured -> skip verification (not recommended for prod)
+        )
     if not signature_header:
         return False
-    sha_name, signature = signature_header.split('=')
-    if sha_name != 'sha256':
+
+    sha_name, signature = signature_header.split("=")
+    if sha_name != "sha256":
         return False
+
     mac = hmac.new(GITHUB_SECRET.encode(), msg=payload, digestmod=hashlib.sha256)
     expected = mac.hexdigest()
     return hmac.compare_digest(expected, signature)
 
+
 def run_pipeline():
+    """Run the ML pipeline in a subprocess."""
     try:
         print("🚀 Starting pipeline subprocess...")
         # Use the current python interpreter (from activated venv) to run main.py
@@ -33,12 +41,16 @@ def run_pipeline():
     except subprocess.CalledProcessError as e:
         print(f"❌ Pipeline failed: {e}")
 
+
 @app.route("/health", methods=["GET"])
 def health():
+    """Health check endpoint."""
     return jsonify({"status": "ok"}), 200
+
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
+    """Handle GitHub webhook events."""
     event = request.headers.get("X-GitHub-Event", "")
     signature = request.headers.get("X-Hub-Signature-256", "")
     payload = request.get_data()
@@ -58,6 +70,7 @@ def webhook():
 
     return jsonify({"message": "pipeline started"}), 200
 
+
 if __name__ == "__main__":
-    # Bind to 0.0.0.0 so ngrok can reach the server
-    app.run(host="0.0.0.0", port=5000)
+    # Bind to 127.0.0.1 so local servers/ngrok can reach the server
+    app.run(host="127.0.0.1", port=5000)
