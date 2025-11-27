@@ -11,27 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Set up Python
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: |
-          python -m venv env
-          . env/bin/activate
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Run Makefile CI pipeline
       - name: Run CI pipeline
-        run: |
-          . env/bin/activate
-          make ci
-
+        run: make ci
